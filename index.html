@@ -185,17 +185,24 @@
             .hero-text h1 { font-size: 2.5rem; }
         }
         
-        /* --- SỬA LỖI LOGO QUÁ LỚN --- */
-        /* Đoạn này sẽ ép tất cả ảnh trong tiêu đề dự án về size chuẩn */
-        .proj-header img.proj-logo {
-            width: 45px !important;   /* Ép chiều rộng cố định */
-            height: 45px !important;  /* Ép chiều cao cố định */
-            object-fit: contain;      /* Đảm bảo ảnh không bị méo */
-            border-radius: 8px;
+        /* --- FIX LỖI ẢNH LOGO BỊ TO (MỚI NHẤT) --- */
+        /* Code này chọn thẳng vào mọi ảnh nằm trong header dự án */
+        .proj-header img {
+            width: 50px !important;     /* Ép chiều rộng */
+            height: 50px !important;    /* Ép chiều cao */
+            object-fit: cover !important; /* Cắt ảnh gọn gàng không bị méo */
+            border-radius: 10px !important; /* Bo tròn góc */
             background: #fff;
-            padding: 4px;             /* Thêm chút khoảng cách cho đẹp */
-            flex-shrink: 0;           /* Ngăn không cho ảnh bị co lại */
+            padding: 2px;
+            flex-shrink: 0;
+            display: block;
         }
+        
+        /* Riêng ảnh Nexus và Daylight (nếu nó là hình vuông to) */
+        .proj-header {
+            overflow: hidden; /* Ẩn phần thừa nếu có */
+        }
+        
     </style>
 </head>
 <body>
