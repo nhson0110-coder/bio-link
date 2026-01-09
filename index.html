@@ -184,6 +184,18 @@
             .contact-grid { grid-template-columns: 1fr; }
             .hero-text h1 { font-size: 2.5rem; }
         }
+        
+        /* --- SỬA LỖI LOGO QUÁ LỚN --- */
+        /* Đoạn này sẽ ép tất cả ảnh trong tiêu đề dự án về size chuẩn */
+        .proj-header img.proj-logo {
+            width: 45px !important;   /* Ép chiều rộng cố định */
+            height: 45px !important;  /* Ép chiều cao cố định */
+            object-fit: contain;      /* Đảm bảo ảnh không bị méo */
+            border-radius: 8px;
+            background: #fff;
+            padding: 4px;             /* Thêm chút khoảng cách cho đẹp */
+            flex-shrink: 0;           /* Ngăn không cho ảnh bị co lại */
+        }
     </style>
 </head>
 <body>
