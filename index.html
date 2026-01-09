@@ -3,214 +3,383 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nguyen Son | Web3 Profile</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Nguyen Son | Web3 Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
         :root {
-            /* Bảng màu Dark Mode chuẩn */
-            --bg-color: #0B1120;       
-            --card-bg: #151e32;        
-            --primary: #5865F2;        /* Màu Discord */
-            --mod-color: #38bdf8;      /* Màu xanh Cyan (Mod) */
-            --og-color: #fbbf24;       /* Màu vàng Gold (OG) */
-            --text-main: #ffffff;
+            --bg-body: #020617;       /* Nền đen sâu */
+            --bg-card: #0f172a;       /* Nền thẻ */
+            --bg-card-hover: #1e293b; /* Nền thẻ khi di chuột */
+            --primary: #06b6d4;       /* Màu Cyan chủ đạo */
+            --secondary: #3b82f6;     /* Màu xanh dương */
+            --text-main: #f8fafc;
             --text-sub: #94a3b8;
+            --border: rgba(255,255,255,0.08);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background-color: var(--bg-body);
             color: var(--text-main);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            padding: 50px 20px;
-            /* Hiệu ứng ánh sáng nền nhẹ phía sau */
-            background-image: radial-gradient(circle at center 100px, rgba(56, 189, 248, 0.1) 0%, rgba(11, 17, 32, 0) 70%);
-            background-attachment: fixed;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 400px; /* Kích thước chuẩn gọn đẹp */
-            text-align: center;
-        }
-
-        /* --- AVATAR & INFO --- */
-        .avatar {
-            width: 115px; height: 115px;
-            border-radius: 50%;
-            border: 3px solid var(--mod-color); /* Viền xanh sáng */
-            object-fit: cover;
-            margin-bottom: 15px;
-            box-shadow: 0 0 25px rgba(56, 189, 248, 0.25);
-        }
-
-        .name {
-            font-size: 1.6rem;
-            font-weight: 800;
-            margin-bottom: 8px;
-            letter-spacing: -0.5px;
-        }
-
-        .bio {
-            color: var(--text-sub);
-            font-size: 0.95rem;
             line-height: 1.6;
-            margin-bottom: 35px;
-            font-weight: 500;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(6, 182, 212, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 40%);
         }
 
-        /* --- TIÊU ĐỀ MỤC --- */
-        .section-label {
-            text-align: left;
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            color: #64748b;
-            margin: 0 0 12px 0;
-            padding-bottom: 8px;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+        /* --- THANH MENU (NAVBAR) --- */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 5%;
+            max-width: 1200px; margin: 0 auto;
+        }
+        .logo { font-weight: 700; font-size: 1.2rem; display: flex; align-items: center; gap: 10px; }
+        .logo img { width: 35px; height: 35px; border-radius: 50%; border: 2px solid var(--primary); }
+        
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { color: var(--text-sub); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* --- BỐ CỤC CHÍNH --- */
+        .container {
+            max-width: 1200px; margin: 0 auto; padding: 40px 5%;
         }
 
-        /* --- THẺ DỰ ÁN --- */
-        .card {
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 14px;
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: transform 0.2s, border-color 0.2s;
+        /* --- HERO SECTION (PHẦN ĐẦU) --- */
+        .hero {
+            display: grid; grid-template-columns: 1.5fr 1fr; gap: 50px; align-items: start;
+            margin-bottom: 80px;
         }
 
-        .card:hover { 
-            transform: translateY(-3px); 
-            border-color: rgba(255,255,255,0.15);
+        .hero-text h1 {
+            font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero-title { color: var(--primary); font-weight: 600; margin-bottom: 10px; display: block; letter-spacing: 1px;}
+        
+        .hero-desc { color: var(--text-sub); font-size: 1.1rem; margin-bottom: 30px; max-width: 90%; }
+
+        .btn-primary {
+            display: inline-block; padding: 12px 25px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: #fff; text-decoration: none; border-radius: 50px; font-weight: 600;
+            box-shadow: 0 4px 20px rgba(6, 182, 212, 0.3); transition: 0.3s;
+        }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(6, 182, 212, 0.5); }
+
+        .stats-row { display: flex; gap: 20px; margin-top: 40px; }
+        .stat-box {
+            background: rgba(255,255,255,0.03); border: 1px solid var(--border);
+            padding: 15px 25px; border-radius: 12px;
+        }
+        .stat-num { font-size: 1.2rem; font-weight: 700; color: #fff; display: block;}
+        .stat-label { font-size: 0.8rem; color: var(--text-sub); }
+
+        /* --- PROFILE CARD (BÊN PHẢI) --- */
+        .profile-card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 20px; padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            position: relative; overflow: hidden;
+        }
+        /* Hiệu ứng glow */
+        .profile-card::before {
+            content: ''; position: absolute; top: -50px; right: -50px;
+            width: 150px; height: 150px; background: var(--primary);
+            filter: blur(80px); opacity: 0.2;
         }
 
-        /* Dải màu bên trái */
-        .card.mod { border-left: 4px solid var(--mod-color); }
-        .card.og { border-left: 4px solid var(--og-color); }
-
-        /* Header của thẻ: Tên + Badge */
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
+        .card-header { display: flex; gap: 15px; align-items: center; margin-bottom: 25px; }
+        .card-avatar { width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--primary); object-fit: cover;}
+        
+        .info-group { margin-bottom: 20px; }
+        .info-label { font-size: 0.75rem; text-transform: uppercase; color: var(--text-sub); letter-spacing: 1px; margin-bottom: 8px; }
+        .info-content { font-size: 0.95rem; color: #fff; }
+        
+        .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+        .tag {
+            font-size: 0.75rem; padding: 4px 10px; border-radius: 20px;
+            background: rgba(6, 182, 212, 0.1); color: var(--primary); border: 1px solid rgba(6, 182, 212, 0.2);
         }
 
-        .project-name {
-            font-weight: 700;
-            font-size: 1.05rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        /* --- SECTION TITLE --- */
+        .section-title { font-size: 1.8rem; margin-bottom: 30px; padding-top: 60px; border-top: 1px solid var(--border); }
+        
+        /* --- PROJECTS GRID (DỰ ÁN) --- */
+        .projects-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;
         }
 
-        .badge {
-            font-size: 0.65rem;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-weight: 800;
-            text-transform: uppercase;
+        .project-card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 16px; padding: 25px;
+            transition: 0.3s; position: relative;
+            display: flex; flex-direction: column; justify-content: space-between;
         }
-        .bg-mod { background: rgba(56, 189, 248, 0.15); color: var(--mod-color); }
-        .bg-og { background: rgba(251, 191, 36, 0.15); color: var(--og-color); }
+        .project-card:hover { transform: translateY(-5px); background: var(--bg-card-hover); border-color: rgba(6, 182, 212, 0.3); }
 
-        /* Hàng nút bấm */
-        .btn-row { display: flex; gap: 8px; }
+        .proj-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .proj-logo { width: 40px; height: 40px; border-radius: 8px; background: #fff; padding: 2px; object-fit: contain; }
+        .proj-badge { font-size: 0.7rem; padding: 4px 8px; border-radius: 6px; font-weight: 700; text-transform: uppercase;}
+        .badge-mod { background: rgba(6, 182, 212, 0.15); color: var(--primary); }
+        .badge-og { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
 
-        .btn {
-            flex: 1;
-            height: 38px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 6px;
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 600;
-            transition: opacity 0.2s;
+        .proj-name { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; color: var(--primary); }
+        .proj-desc { font-size: 0.9rem; color: var(--text-sub); margin-bottom: 15px; min-height: 50px; }
+
+        .proj-meta ul { list-style: none; padding-left: 0; }
+        .proj-meta li {
+            font-size: 0.85rem; color: #cbd5e1; margin-bottom: 6px; position: relative; padding-left: 15px;
         }
-        .btn:hover { opacity: 0.85; }
+        .proj-meta li::before {
+            content: '•'; color: var(--primary); position: absolute; left: 0;
+        }
 
-        .btn-follow { background: #000; color: #fff; border: 1px solid rgba(255,255,255,0.15); }
-        .btn-discord { background: var(--primary); color: #fff; gap: 6px; }
+        .proj-role-footer {
+            margin-top: 20px; padding-top: 15px; border-top: 1px dashed var(--border);
+            font-size: 0.85rem; color: var(--primary); font-weight: 600;
+        }
 
-        .footer { margin-top: 50px; font-size: 0.8rem; color: #334155; }
+        /* --- EXPERIENCE --- */
+        .exp-card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 16px; padding: 25px; margin-bottom: 20px;
+        }
+        .exp-title { font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 5px; }
+        .exp-time { font-size: 0.85rem; color: var(--primary); margin-bottom: 15px; display: block; }
+        .exp-list li { margin-bottom: 8px; color: var(--text-sub); font-size: 0.95rem; }
+
+        /* --- CONTACT --- */
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .contact-box { background: var(--bg-card); padding: 25px; border-radius: 16px; border: 1px solid var(--border); }
+        .contact-link { display: block; color: var(--primary); text-decoration: none; margin-bottom: 10px; font-weight: 600; }
+        .contact-link:hover { text-decoration: underline; }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center; padding: 40px 0; color: var(--text-sub); font-size: 0.85rem;
+            border-top: 1px solid var(--border); margin-top: 60px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .hero-text h1 { font-size: 2.5rem; }
+        }
     </style>
 </head>
 <body>
 
+    <nav>
+        <div class="logo">
+            <img src="https://ui-avatars.com/api/?name=NS&background=06b6d4&color=fff" alt="Logo">
+            Nguyen Son
+        </div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
     <div class="container">
-        <img src="https://ui-avatars.com/api/?name=NS&background=0f172a&color=38bdf8&size=256&bold=true" alt="Nguyen Son" class="avatar">
         
-        <h1 class="name">Nguyen Son</h1>
+        <section class="hero" id="about">
+            <div class="hero-text">
+                <span class="hero-title">CRYPTO • DEFI • WEB3</span>
+                <h1>Community Builder & <br>Web3 Moderator</h1>
+                <p class="hero-desc">
+                    I'm <strong>Nguyen Son</strong> – an on-chain Moderator & Community Builder. 
+                    I focus on community safety, anti-scam protection, and bridging the gap between users and complex technologies like AI & ZK-Rollups.
+                </p>
+                
+                <a href="#contact" class="btn-primary">Connect & Collaborate</a>
+
+                <div class="stats-row">
+                    <div class="stat-box">
+                        <span class="stat-num">2024 &rarr; Now</span>
+                        <span class="stat-label">In Web3 Market</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-num">4+ Projects</span>
+                        <span class="stat-label">Trusted Mod/OG</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-num">24/7</span>
+                        <span class="stat-label">Community Support</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-card">
+                <div class="card-header">
+                    <img src="https://ui-avatars.com/api/?name=NS&background=0f172a&color=06b6d4&size=100&bold=true" alt="Avatar" class="card-avatar">
+                    <div>
+                        <h3 style="color: #fff; font-size: 1.1rem;">Nguyen Son</h3>
+                        <span style="color: var(--text-sub); font-size: 0.85rem;">On-chain Moderator</span>
+                    </div>
+                </div>
+
+                <div class="info-group">
+                    <div class="info-label">FOCUS</div>
+                    <div class="info-content">Community Safety, Engagement, Web3 Education, AI Agents.</div>
+                </div>
+
+                <div class="info-group">
+                    <div class="info-label">STACK</div>
+                    <div class="info-content">Discord Management, Telegram Bot Mod, Anti-Scam Tools, Notion.</div>
+                </div>
+
+                <div class="info-group">
+                    <div class="info-label">TAGS</div>
+                    <div class="tags">
+                        <span class="tag">#DeFi</span>
+                        <span class="tag">#AI</span>
+                        <span class="tag">#ZK</span>
+                        <span class="tag">#Risk</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <h2 class="section-title" id="projects">Web3 Projects I have joined</h2>
+        <div class="projects-grid">
+            
+            <div class="project-card">
+                <div>
+                    <div class="proj-header">
+                        <img src="https://ui-avatars.com/api/?name=OM&background=fff&color=000" class="proj-logo" alt="OM">
+                        <span class="proj-badge badge-mod">Community • AI</span>
+                    </div>
+                    <div class="proj-name">OpenMind (Robotics)</div>
+                    <p class="proj-desc">A decentralized AGI network focused on Machine Learning & Robotics.</p>
+                    <div class="proj-meta">
+                        <ul>
+                            <li><strong>Time:</strong> 2024 – Present</li>
+                            <li><strong>Role:</strong> Moderator</li>
+                            <li><strong>Task:</strong> Handling spam/scam, bridging devs & community, organizing AMAs.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="proj-role-footer">Role: Moderator</div>
+            </div>
+
+            <div class="project-card">
+                <div>
+                    <div class="proj-header">
+                        <img src="https://ui-avatars.com/api/?name=SC&background=fff&color=000" class="proj-logo" alt="SC">
+                        <span class="proj-badge badge-mod">Layer 1</span>
+                    </div>
+                    <div class="proj-name">SANDchain</div>
+                    <p class="proj-desc">High-performance Layer 1 blockchain focusing on scalability.</p>
+                    <div class="proj-meta">
+                        <ul>
+                            <li><strong>Time:</strong> 2024 – Present</li>
+                            <li><strong>Role:</strong> Moderator</li>
+                            <li><strong>Task:</strong> Ecosystem education, user support, maintaining community health.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="proj-role-footer">Role: Moderator</div>
+            </div>
+
+            <div class="project-card">
+                <div>
+                    <div class="proj-header">
+                        <img src="https://ui-avatars.com/api/?name=BZ&background=fff&color=000" class="proj-logo" alt="BZ">
+                        <span class="proj-badge badge-og">ZK Coprocessor</span>
+                    </div>
+                    <div class="proj-name">Brevis ZK</div>
+                    <p class="proj-desc">Smart ZK Coprocessor enabling data-driven dApps.</p>
+                    <div class="proj-meta">
+                        <ul>
+                            <li><strong>Time:</strong> Early Supporter</li>
+                            <li><strong>Role:</strong> OG Member</li>
+                            <li><strong>Task:</strong> Testing features, providing feedback, community engagement.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="proj-role-footer">Role: OG Member</div>
+            </div>
+
+            <div class="project-card">
+                <div>
+                    <div class="proj-header">
+                        <img src="https://ui-avatars.com/api/?name=AX&background=fff&color=000" class="proj-logo" alt="AX">
+                        <span class="proj-badge badge-og">DePIN • AI</span>
+                    </div>
+                    <div class="proj-name">AXIS AI</div>
+                    <p class="proj-desc">The Physical AI revolution engaging with DePIN ecosystem.</p>
+                    <div class="proj-meta">
+                        <ul>
+                            <li><strong>Time:</strong> Early Supporter</li>
+                            <li><strong>Role:</strong> OG Member</li>
+                            <li><strong>Task:</strong> Content creation support & community growth.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="proj-role-footer">Role: OG Member</div>
+            </div>
+
+        </div>
+
+        <h2 class="section-title" id="experience">Career Journey & Experience</h2>
         
-        <p class="bio">
-            Web3 Community Builder & Moderator.<br>
-            Bridging the gap between users & technology.<br>
-            <span style="color: #64748b; font-size: 0.85rem;">Focus: AI Agents & ZK-Rollups</span>
-        </p>
+        <div class="exp-card">
+            <div class="exp-title">On-chain Moderator • Ambassador</div>
+            <span class="exp-time">2024 – Present</span>
+            <ul class="exp-list">
+                <li>Building communities for multiple Web3 projects while creating educational content.</li>
+                <li>Manage communities on Discord/X, handle reports and warn about scam/phishing.</li>
+                <li>Create content (posts, recaps, announcements) so communities stay updated fast and accurately.</li>
+                <li>Work directly with the core team to keep messaging consistent to the community.</li>
+            </ul>
+        </div>
 
-        <div class="section-label">Official Moderator</div>
+        <div class="exp-card">
+            <div class="exp-title">Technical Background (Off-chain)</div>
+            <span class="exp-time">Previous Experience</span>
+            <ul class="exp-list">
+                <li>Systematic, logical and careful problem-solving skills applied to community operations.</li>
+                <li>Ability to understand technical documentation (Git, Docker, SQL) and translate it for users.</li>
+                <li>Combine technical hard skills with communication soft skills to balance logic and emotion.</li>
+            </ul>
+        </div>
 
-        <div class="card mod">
-            <div class="card-header">
-                <div class="project-name"><i class="fa-solid fa-brain"></i> OpenMind</div>
-                <span class="badge bg-mod">Mod</span>
+        <h2 class="section-title" id="contact">Let's build the next Web3 product together</h2>
+        <div class="contact-grid">
+            <div class="contact-box">
+                <h3 style="margin-bottom: 20px; color: #fff;">Contact Information</h3>
+                <div style="margin-bottom: 10px; font-size: 0.8rem; color: var(--text-sub);">EMAIL</div>
+                <a href="mailto:hoangson.nhs@gmail.com" class="contact-link">hoangson.nhs@gmail.com</a>
+                
+                <div style="margin-bottom: 10px; margin-top: 20px; font-size: 0.8rem; color: var(--text-sub);">DISCORD</div>
+                <span class="contact-link">nhson0110ef7</span>
             </div>
-            <div class="btn-row">
-                <a href="https://x.com/openmind_agi" target="_blank" class="btn btn-follow">Follow</a>
-                <a href="https://discord.gg/openmind" target="_blank" class="btn btn-discord"><i class="fa-brands fa-discord"></i> Discord</a>
+
+            <div class="contact-box">
+                <h3 style="margin-bottom: 20px; color: #fff;">What I Offer</h3>
+                <p style="color: var(--text-sub); font-size: 0.9rem;">
+                    Conflict Resolution, Crisis Management, Engagement Facilitation.<br><br>
+                    <strong>Web3 Skills:</strong> EVM, DeFi, Bot Mod, proficient with Discord, Notion, Canva, MEE6.
+                </p>
             </div>
         </div>
 
-        <div class="card mod">
-            <div class="card-header">
-                <div class="project-name"><i class="fa-solid fa-cube"></i> SANDchain</div>
-                <span class="badge bg-mod">Mod</span>
-            </div>
-            <div class="btn-row">
-                <a href="https://x.com/0xSANDchain" target="_blank" class="btn btn-follow">Follow</a>
-                <a href="https://discord.gg/pjhTJh6CSn" target="_blank" class="btn btn-discord"><i class="fa-brands fa-discord"></i> Discord</a>
-            </div>
-        </div>
-
-        <div class="section-label">OG & Early Supporter</div>
-
-        <div class="card og">
-            <div class="card-header">
-                <div class="project-name"><i class="fa-solid fa-layer-group"></i> Brevis ZK</div>
-                <span class="badge bg-og">OG Member</span>
-            </div>
-            <div class="btn-row">
-                <a href="https://x.com/brevis_zk" target="_blank" class="btn btn-follow">Follow</a>
-                <a href="https://discord.com/invite/QTRkjKdZ6A" target="_blank" class="btn btn-discord"><i class="fa-brands fa-discord"></i> Discord</a>
-            </div>
-        </div>
-
-        <div class="card og">
-            <div class="card-header">
-                <div class="project-name"><i class="fa-solid fa-robot"></i> AXIS AI</div>
-                <span class="badge bg-og">OG Member</span>
-            </div>
-            <div class="btn-row">
-                <a href="https://x.com/axisrobotics" target="_blank" class="btn btn-follow">Follow</a>
-                <a href="https://discord.gg/64tfSQ7y" target="_blank" class="btn btn-discord"><i class="fa-brands fa-discord"></i> Discord</a>
-            </div>
-        </div>
-        
-        <div class="footer">
-            © 2026 Nguyen Son
-        </div>
     </div>
+
+    <footer>
+        <p>© 2026 Nguyen Son. All rights reserved.</p>
+        <p style="margin-top: 5px; opacity: 0.5;">0xD712Ac376039fa072d0DC3D03AA8411B3E9A4d36</p>
+    </footer>
 
 </body>
 </html>
