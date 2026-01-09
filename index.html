@@ -3,27 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Profile | Community Builder</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Nguyen Son | Community Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
+            --bg-color: #0f172a;       /* Nền tối */
+            --card-bg: #1e293b;        /* Nền thẻ */
             --text-primary: #f8fafc;
             --text-secondary: #94a3b8;
-            --accent-mod: #38bdf8; /* Màu xanh cho Mod */
-            --accent-og: #fbbf24;  /* Màu vàng cho OG */
-            --hover-bg: #334155;
+            --accent-mod: #38bdf8;     /* Màu xanh dương cho Mod */
+            --accent-og: #fbbf24;      /* Màu vàng cho OG */
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-color);
@@ -34,226 +29,134 @@
             padding: 40px 20px;
         }
 
-        .container {
-            width: 100%;
-            max-width: 480px;
-            text-align: center;
-        }
+        .container { width: 100%; max-width: 480px; text-align: center; }
 
-        /* Avatar và Thông tin cá nhân */
-        .profile-header {
-            margin-bottom: 40px;
-            animation: fadeIn 1s ease-in-out;
-        }
-
+        /* Avatar & Header */
         .avatar {
-            width: 120px;
-            height: 120px;
+            width: 110px; height: 110px;
             border-radius: 50%;
             border: 3px solid var(--accent-mod);
             object-fit: cover;
             margin-bottom: 15px;
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
         }
+        .name { font-size: 1.6rem; font-weight: 700; margin-bottom: 5px; }
+        .bio { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 30px; }
 
-        .name {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-
-        .bio {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        /* Phân cách Section */
-        .section-title {
+        /* Tiêu đề mục */
+        .section-header {
             text-align: left;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
             color: var(--text-secondary);
-            margin: 30px 0 15px 0;
+            margin: 25px 0 10px 5px;
             border-bottom: 1px solid #334155;
             padding-bottom: 5px;
         }
 
-        /* Card Project */
+        /* Thẻ dự án */
         .card {
-            background-color: var(--card-bg);
-            border-radius: 16px;
-            padding: 20px;
-            margin-bottom: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            transition: transform 0.2s, box-shadow 0.2s;
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 12px;
             border: 1px solid rgba(255,255,255,0.05);
-            position: relative;
-            overflow: hidden;
+            transition: transform 0.2s ease;
         }
+        .card:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.1); }
 
-        .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
-            background-color: var(--hover-bg);
-        }
-
-        /* Dải màu đánh dấu bên trái card */
+        /* Dải màu bên trái */
         .card.mod { border-left: 4px solid var(--accent-mod); }
         .card.og { border-left: 4px solid var(--accent-og); }
 
-        .project-info {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
+        .project-top {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 12px;
         }
-
-        .project-name {
-            font-size: 1.2rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+        .project-name { font-weight: 600; font-size: 1.1rem; display: flex; align-items: center; gap: 8px; }
         
-        .badge {
-            font-size: 0.7rem;
-            padding: 4px 8px;
-            border-radius: 20px;
-            font-weight: 700;
-        }
+        /* Huy hiệu chức vụ */
+        .badge { font-size: 0.7rem; padding: 3px 8px; border-radius: 4px; font-weight: 700; }
+        .mod-badge { background: rgba(56, 189, 248, 0.1); color: var(--accent-mod); }
+        .og-badge { background: rgba(251, 191, 36, 0.1); color: var(--accent-og); }
 
-        .badge.mod-badge { background: rgba(56, 189, 248, 0.15); color: var(--accent-mod); }
-        .badge.og-badge { background: rgba(251, 191, 36, 0.15); color: var(--accent-og); }
-
-        /* Button Links */
-        .links {
-            display: flex;
-            gap: 10px;
-            width: 100%;
-        }
-
+        /* Nút bấm */
+        .btn-group { display: flex; gap: 8px; }
         .btn {
             flex: 1;
-            padding: 10px;
-            border-radius: 8px;
+            padding: 8px;
+            border-radius: 6px;
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+            display: flex; align-items: center; justify-content: center; gap: 6px;
             transition: opacity 0.2s;
         }
+        .btn:hover { opacity: 0.8; }
+        .btn-x { background: #000; color: #fff; border: 1px solid #333; }
+        .btn-discord { background: #5865F2; color: #fff; }
 
-        .btn:hover { opacity: 0.85; }
-
-        .btn-x { background-color: #000; color: #fff; border: 1px solid #333; }
-        .btn-discord { background-color: #5865F2; color: #fff; }
-
-        /* Animation */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Footer */
-        .footer {
-            margin-top: 50px;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-        }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <div class="profile-header">
-            <img src="https://ui-avatars.com/api/?name=N+S&background=random&size=200" alt="Avatar" class="avatar">
-            <h1 class="name">Nguyen Son</h1>
-            <p class="bio">Community Moderator & Web3 Enthusiast.<br>Building trust in the decentralized world.</p>
-        </div>
+        <img src="https://ui-avatars.com/api/?name=Nguyen+Son&background=random&size=200" alt="Avatar" class="avatar">
+        
+        <h1 class="name">Nguyen Son</h1>
+        <p class="bio">Web3 Moderator & Community Builder.<br>Passionate about AI & Blockchain.</p>
 
-        <div class="section-title">Current Moderator Roles</div>
+        <div class="section-header">Official Moderator</div>
 
         <div class="card mod">
-            <div class="project-info">
-                <div class="project-name">
-                    <i class="fa-solid fa-brain"></i> OpenMind
-                </div>
+            <div class="project-top">
+                <div class="project-name"><i class="fa-solid fa-brain"></i> OpenMind</div>
                 <span class="badge mod-badge">MODERATOR</span>
             </div>
-            <div class="links">
-                <a href="https://x.com/openmind_agi" target="_blank" class="btn btn-x">
-                    <i class="fa-brands fa-x-twitter"></i> Follow
-                </a>
-                <a href="https://discord.gg/openmind" target="_blank" class="btn btn-discord">
-                    <i class="fa-brands fa-discord"></i> Join Discord
-                </a>
+            <div class="btn-group">
+                <a href="https://x.com/openmind_agi" target="_blank" class="btn btn-x"><i class="fa-brands fa-x-twitter"></i> Follow</a>
+                <a href="https://discord.gg/openmind" target="_blank" class="btn btn-discord"><i class="fa-brands fa-discord"></i> Discord</a>
             </div>
         </div>
 
         <div class="card mod">
-            <div class="project-info">
-                <div class="project-name">
-                    <i class="fa-solid fa-cube"></i> SANDchain
-                </div>
+            <div class="project-top">
+                <div class="project-name"><i class="fa-solid fa-cube"></i> SANDchain</div>
                 <span class="badge mod-badge">MODERATOR</span>
             </div>
-            <div class="links">
-                <a href="https://x.com/0xSANDchain" target="_blank" class="btn btn-x">
-                    <i class="fa-brands fa-x-twitter"></i> Follow
-                </a>
-                <a href="https://discord.gg/pjhTJh6CSn" target="_blank" class="btn btn-discord">
-                    <i class="fa-brands fa-discord"></i> Join Discord
-                </a>
+            <div class="btn-group">
+                <a href="https://x.com/0xSANDchain" target="_blank" class="btn btn-x"><i class="fa-brands fa-x-twitter"></i> Follow</a>
+                <a href="https://discord.gg/pjhTJh6CSn" target="_blank" class="btn btn-discord"><i class="fa-brands fa-discord"></i> Discord</a>
             </div>
         </div>
 
-        <div class="section-title">OG & Early Supporter</div>
+        <div class="section-header">OG & Early Supporter</div>
 
         <div class="card og">
-            <div class="project-info">
-                <div class="project-name">
-                    <i class="fa-solid fa-layer-group"></i> Brevis ZK
-                </div>
+            <div class="project-top">
+                <div class="project-name"><i class="fa-solid fa-layer-group"></i> Brevis ZK</div>
                 <span class="badge og-badge">OG MEMBER</span>
             </div>
-            <div class="links">
-                <a href="https://x.com/brevis_zk" target="_blank" class="btn btn-x">
-                    <i class="fa-brands fa-x-twitter"></i> Follow
-                </a>
-                <a href="https://discord.com/invite/QTRkjKdZ6A" target="_blank" class="btn btn-discord">
-                    <i class="fa-brands fa-discord"></i> Join Discord
-                </a>
+            <div class="btn-group">
+                <a href="https://x.com/brevis_zk" target="_blank" class="btn btn-x"><i class="fa-brands fa-x-twitter"></i> Follow</a>
+                <a href="https://discord.com/invite/QTRkjKdZ6A" target="_blank" class="btn btn-discord"><i class="fa-brands fa-discord"></i> Discord</a>
             </div>
         </div>
 
         <div class="card og">
-            <div class="project-info">
-                <div class="project-name">
-                    <i class="fa-solid fa-robot"></i> AXIS AI
-                </div>
+            <div class="project-top">
+                <div class="project-name"><i class="fa-solid fa-robot"></i> AXIS AI</div>
                 <span class="badge og-badge">OG MEMBER</span>
             </div>
-            <div class="links">
-                <a href="https://x.com/axisrobotics" target="_blank" class="btn btn-x">
-                    <i class="fa-brands fa-x-twitter"></i> Follow
-                </a>
-                <a href="https://discord.gg/64tfSQ7y" target="_blank" class="btn btn-discord">
-                    <i class="fa-brands fa-discord"></i> Join Discord
-                </a>
+            <div class="btn-group">
+                <a href="https://x.com/axisrobotics" target="_blank" class="btn btn-x"><i class="fa-brands fa-x-twitter"></i> Follow</a>
+                <a href="https://discord.gg/64tfSQ7y" target="_blank" class="btn btn-discord"><i class="fa-brands fa-discord"></i> Discord</a>
             </div>
         </div>
-
-        <div class="footer">
-            <p>© 2026 Nguyen Son. All rights reserved.</p>
+        
+        <div style="margin-top: 40px; font-size: 0.8rem; color: #475569;">
+            © 2026 Nguyen Son
         </div>
     </div>
 
