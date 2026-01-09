@@ -3,114 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nguyen Son | Community Profile</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Nguyen Son | Blockchain & AI Enthusiast</title>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
         :root {
-            --bg-color: #0f172a;       /* Nền tối */
-            --card-bg: #1e293b;        /* Nền thẻ */
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
-            --accent-mod: #38bdf8;     /* Màu xanh dương cho Mod */
-            --accent-og: #fbbf24;      /* Màu vàng cho OG */
+            --primary-color: #3b82f6; /* Xanh dương */
+            --secondary-color: #f59e0b; /* Vàng cam */
+            --bg-overlay: rgba(17, 24, 39, 0.85); /* Lớp phủ tối */
+            --card-bg: rgba(31, 41, 55, 0.7); /* Nền thẻ trong suốt */
+            --text-light: #f9fafb;
+            --text-gray: #9ca3af;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-primary);
+            font-family: 'Be Vietnam Pro', sans-serif;
+            /* Hình nền dải ngân hà từ trang mẫu */
+            background-image: url('https://i.imgur.com/m9I65dY.jpeg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text-light);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
-            min-height: 100vh;
+            align-items: center;
             padding: 40px 20px;
+            position: relative;
         }
 
-        .container { width: 100%; max-width: 480px; text-align: center; }
+        /* Lớp phủ để làm tối hình nền */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: var(--bg-overlay);
+            z-index: -1;
+        }
+
+        .container { width: 100%; max-width: 500px; text-align: center; z-index: 1; }
 
         /* Avatar & Header */
         .avatar {
-            width: 110px; height: 110px;
+            width: 130px; height: 130px;
             border-radius: 50%;
-            border: 3px solid var(--accent-mod);
+            border: 4px solid var(--primary-color);
             object-fit: cover;
-            margin-bottom: 15px;
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+            margin-bottom: 20px;
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.4);
         }
-        .name { font-size: 1.6rem; font-weight: 700; margin-bottom: 5px; }
-        .bio { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 30px; }
+        .name { font-size: 1.8rem; font-weight: 700; margin-bottom: 8px; letter-spacing: 0.5px; }
+        .bio { color: var(--text-gray); font-size: 0.95rem; margin-bottom: 30px; line-height: 1.6; }
 
         /* Tiêu đề mục */
-        .section-header {
+        .section-title {
             text-align: left;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-secondary);
-            margin: 25px 0 10px 5px;
-            border-bottom: 1px solid #334155;
-            padding-bottom: 5px;
+            letter-spacing: 1.2px;
+            color: var(--text-gray);
+            margin: 35px 0 15px 5px;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+            padding-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         /* Thẻ dự án */
         .card {
             background: var(--card-bg);
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 12px;
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: transform 0.2s ease;
+            backdrop-filter: blur(10px); /* Hiệu ứng làm mờ nền */
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
-        .card:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.1); }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255,255,255,0.2);
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
+        }
 
-        /* Dải màu bên trái */
-        .card.mod { border-left: 4px solid var(--accent-mod); }
-        .card.og { border-left: 4px solid var(--accent-og); }
+        /* Dải màu & Hiệu ứng ánh sáng bên trái */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; bottom: 0;
+            width: 4px;
+        }
+        .card.mod::before { background: var(--primary-color); box-shadow: 2px 0 15px var(--primary-color); }
+        .card.og::before { background: var(--secondary-color); box-shadow: 2px 0 15px var(--secondary-color); }
 
-        .project-top {
+        .project-header {
             display: flex; justify-content: space-between; align-items: center;
-            margin-bottom: 12px;
+            margin-bottom: 15px; padding-left: 10px;
         }
-        .project-name { font-weight: 600; font-size: 1.1rem; display: flex; align-items: center; gap: 8px; }
+        .project-name { font-weight: 700; font-size: 1.2rem; display: flex; align-items: center; gap: 10px; }
         
         /* Huy hiệu chức vụ */
-        .badge { font-size: 0.7rem; padding: 3px 8px; border-radius: 4px; font-weight: 700; }
-        .mod-badge { background: rgba(56, 189, 248, 0.1); color: var(--accent-mod); }
-        .og-badge { background: rgba(251, 191, 36, 0.1); color: var(--accent-og); }
+        .badge {
+            font-size: 0.75rem; padding: 5px 10px; border-radius: 20px; font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .mod-badge { background: rgba(59, 130, 246, 0.2); color: var(--primary-color); }
+        .og-badge { background: rgba(245, 158, 11, 0.2); color: var(--secondary-color); }
 
         /* Nút bấm */
-        .btn-group { display: flex; gap: 8px; }
+        .btn-group { display: flex; gap: 10px; padding-left: 10px; }
         .btn {
             flex: 1;
-            padding: 8px;
-            border-radius: 6px;
+            padding: 10px;
+            border-radius: 8px;
             text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            display: flex; align-items: center; justify-content: center; gap: 6px;
-            transition: opacity 0.2s;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            transition: all 0.2s;
         }
-        .btn:hover { opacity: 0.8; }
-        .btn-x { background: #000; color: #fff; border: 1px solid #333; }
+        .btn:hover { opacity: 0.9; transform: scale(1.02); }
+        .btn-x { background: #000; color: #fff; border: 1px solid rgba(255,255,255,0.2); }
         .btn-discord { background: #5865F2; color: #fff; }
 
+        .footer { margin-top: 50px; font-size: 0.85rem; color: var(--text-gray); }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <img src="https://ui-avatars.com/api/?name=Nguyen+Son&background=random&size=200" alt="Avatar" class="avatar">
+        <img src="https://ui-avatars.com/api/?name=Nguyen+Son&background=random&size=260&bold=true" alt="Avatar" class="avatar">
         
         <h1 class="name">Nguyen Son</h1>
-        <p class="bio">Web3 Moderator & Community Builder.<br>Passionate about AI & Blockchain.</p>
+        <p class="bio">Web3 Community Builder. <br> Đam mê công nghệ AI & Blockchain.</p>
 
-        <div class="section-header">Official Moderator</div>
+        <div class="section-title"><i class="fa-solid fa-shield-halved"></i> Official Moderator</div>
 
         <div class="card mod">
-            <div class="project-top">
+            <div class="project-header">
                 <div class="project-name"><i class="fa-solid fa-brain"></i> OpenMind</div>
                 <span class="badge mod-badge">MODERATOR</span>
             </div>
@@ -121,7 +158,7 @@
         </div>
 
         <div class="card mod">
-            <div class="project-top">
+            <div class="project-header">
                 <div class="project-name"><i class="fa-solid fa-cube"></i> SANDchain</div>
                 <span class="badge mod-badge">MODERATOR</span>
             </div>
@@ -131,10 +168,10 @@
             </div>
         </div>
 
-        <div class="section-header">OG & Early Supporter</div>
+        <div class="section-title"><i class="fa-solid fa-medal"></i> OG & Early Supporter</div>
 
         <div class="card og">
-            <div class="project-top">
+            <div class="project-header">
                 <div class="project-name"><i class="fa-solid fa-layer-group"></i> Brevis ZK</div>
                 <span class="badge og-badge">OG MEMBER</span>
             </div>
@@ -145,7 +182,7 @@
         </div>
 
         <div class="card og">
-            <div class="project-top">
+            <div class="project-header">
                 <div class="project-name"><i class="fa-solid fa-robot"></i> AXIS AI</div>
                 <span class="badge og-badge">OG MEMBER</span>
             </div>
@@ -155,8 +192,8 @@
             </div>
         </div>
         
-        <div style="margin-top: 40px; font-size: 0.8rem; color: #475569;">
-            © 2026 Nguyen Son
+        <div class="footer">
+            © 2026 Nguyen Son. All rights reserved.
         </div>
     </div>
 
